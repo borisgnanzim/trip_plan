@@ -186,7 +186,3 @@ Pour contribuer au projet :
 - garder la logique backend propre et testée
 - conserver une interface simple et responsive
 - vérifier les changements avant de les pousser
-
-## Auteur
-
-Projet de démonstration pour la gestion d’un parcours de voyage avec API et interface moderne." 
