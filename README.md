@@ -179,10 +179,3 @@ curl -X POST http://127.0.0.1:8000/plan \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -d '{"city":"Paris"}'
 ```
-
-## Développement
-
-Pour contribuer au projet :
-- garder la logique backend propre et testée
-- conserver une interface simple et responsive
-- vérifier les changements avant de les pousser
