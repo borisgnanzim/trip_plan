@@ -62,67 +62,93 @@ export default function PlanPage() {
   }
 
   return (
-    <main className="min-h-screen px-4 py-10 text-slate-100 sm:px-6 lg:px-8">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 overflow-hidden rounded-[28px] border border-slate-800/80 bg-slate-900/80 p-5 shadow-[0_20px_80px_rgba(2,8,23,0.55)] backdrop-blur-sm sm:p-6 lg:p-8">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <div className="inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-sm font-medium tracking-[0.25em] text-cyan-300">
-              TRIP PLANNER
+    <main className="min-h-screen px-4 py-8 text-slate-100 sm:px-6 lg:px-8 lg:py-10">
+      <div className="mx-auto flex max-w-7xl flex-col gap-6 overflow-hidden rounded-[32px] border border-white/10 bg-slate-900/80 p-5 shadow-[0_25px_80px_rgba(2,8,23,0.65)] backdrop-blur-xl sm:p-6 lg:p-8">
+        <div className="flex flex-col gap-5 rounded-[24px] border border-cyan-400/10 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800/90 p-5 sm:flex-row sm:items-end sm:justify-between sm:p-6">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-cyan-300">
+              Trip Planner
             </div>
-            <h1 className="mt-3 text-2xl font-semibold text-white sm:text-3xl">
-              Planifiez votre voyage
+            <h1 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              Créez votre itinéraire en quelques secondes
             </h1>
-            <p className="mt-2 text-sm leading-6 text-slate-400">
-              Découvrez la météo et des activités adaptées à votre destination.
+            <p className="mt-3 text-sm leading-7 text-slate-300 sm:text-[15px]">
+              Obtenez une vue claire sur la météo, l’ambiance du lieu et les meilleures activités à faire.
             </p>
           </div>
           <button
-            className="rounded-2xl border border-slate-700 bg-slate-800/70 px-4 py-2 text-sm font-medium text-slate-100 transition hover:border-slate-500 hover:bg-slate-700"
+            className="rounded-2xl border border-slate-700 bg-slate-800/80 px-4 py-2.5 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/40 hover:bg-slate-700"
             onClick={handleLogout}
           >
             Déconnexion
           </button>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-          <section className="min-w-0 rounded-[24px] border border-slate-800 bg-slate-950/70 p-5">
-            <h2 className="text-xl font-semibold text-white">Choisir une ville</h2>
-            <div className="mt-4 space-y-3">
+        <div className="grid gap-6 xl:grid-cols-[0.9fr_1.1fr]">
+          <section className="min-w-0 rounded-[24px] border border-white/10 bg-slate-950/70 p-5 shadow-inner shadow-black/20">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-cyan-400/15 text-lg text-cyan-300">
+                ✦
+              </div>
+              <div>
+                <h2 className="text-xl font-semibold text-white">Choisir une destination</h2>
+                <p className="text-sm text-slate-400">Saisissez une ville pour générer un aperçu complet.</p>
+              </div>
+            </div>
+
+            <div className="mt-5 space-y-3">
               <label className="block text-sm text-slate-300">
-                <span className="mb-2 block">Ville</span>
+                <span className="mb-2 block font-medium">Ville</span>
                 <input
-                  className="w-full rounded-2xl border border-slate-700 bg-slate-900/80 px-4 py-3 text-slate-100 outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                  className="w-full rounded-2xl border border-slate-700 bg-slate-900/90 px-4 py-3 text-slate-100 outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
                   placeholder="Paris, Lyon, Marrakech..."
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
                 />
               </label>
               <button
-                className="w-full rounded-2xl bg-cyan-400 px-4 py-3 font-semibold text-slate-950 transition hover:bg-cyan-300 disabled:cursor-not-allowed disabled:opacity-70"
+                className="w-full rounded-2xl bg-gradient-to-r from-cyan-400 to-sky-500 px-4 py-3 font-semibold text-slate-950 transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-70"
                 onClick={handlePlan}
                 disabled={loading}
               >
                 {loading ? "Chargement..." : "Afficher la météo et les activités"}
               </button>
             </div>
-            {message ? <p className="mt-4 rounded-2xl border border-slate-800 bg-slate-950/70 p-3 text-sm leading-6 text-slate-300 break-words whitespace-pre-line">{message}</p> : null}
+
+            {message ? (
+              <p className="mt-4 rounded-2xl border border-slate-800 bg-slate-950/80 p-3 text-sm leading-6 text-slate-300 break-words whitespace-pre-line">
+                {message}
+              </p>
+            ) : null}
           </section>
 
-          <section className="min-w-0 rounded-[24px] border border-slate-800 bg-slate-950/70 p-5">
+          <section className="min-w-0 rounded-[24px] border border-white/10 bg-slate-950/70 p-5 shadow-inner shadow-black/20">
             {plan ? (
               <>
-                <h2 className="text-xl font-semibold text-white break-words">Résultat pour {plan.city}</h2>
-                <div className="mt-4 grid gap-4 md:grid-cols-2">
-                  <div className="min-w-0 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/70 p-4">
-                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-slate-400">Météo</p>
-                    <p className="mt-3 text-3xl font-semibold text-white">{plan.weather.temperature}°C</p>
-                    <p className="mt-2 text-sm leading-6 text-slate-400 break-all whitespace-pre-line">{plan.weather.description}</p>
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-400/15 text-lg text-emerald-300">
+                    ✈
                   </div>
-                  <div className="min-w-0 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/70 p-4">
-                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-slate-400">Activités</p>
+                  <div>
+                    <h2 className="text-xl font-semibold text-white break-words">Résultat pour {plan.city}</h2>
+                    <p className="text-sm text-slate-400">Un aperçu rapide, propre et lisible.</p>
+                  </div>
+                </div>
+
+                <div className="mt-5 grid gap-4 lg:grid-cols-2">
+                  <div className="min-w-0 overflow-hidden rounded-[20px] border border-cyan-400/10 bg-gradient-to-br from-cyan-500/10 to-slate-900 p-4">
+                    <p className="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-300">Météo</p>
+                    <p className="mt-3 text-4xl font-semibold text-white">{plan.weather.temperature}°C</p>
+                    <p className="mt-2 text-sm leading-7 text-slate-300 break-all whitespace-pre-line">
+                      {plan.weather.description}
+                    </p>
+                  </div>
+
+                  <div className="min-w-0 overflow-hidden rounded-[20px] border border-emerald-400/10 bg-gradient-to-br from-emerald-500/10 to-slate-900 p-4">
+                    <p className="text-sm font-semibold uppercase tracking-[0.25em] text-emerald-300">Activités</p>
                     <ul className="mt-3 space-y-2">
                       {plan.activities.map((activity, index) => (
-                        <li key={`${activity.name}-${index}`} className="overflow-hidden rounded-xl border border-slate-800 bg-slate-950/70 px-3 py-2">
+                        <li key={`${activity.name}-${index}`} className="overflow-hidden rounded-2xl border border-white/10 bg-slate-950/80 px-3 py-2.5">
                           <p className="font-medium text-white break-all">{activity.name}</p>
                           <p className="mt-1 text-sm text-slate-400 break-all">{activity.category}</p>
                         </li>
@@ -132,7 +158,7 @@ export default function PlanPage() {
                 </div>
               </>
             ) : (
-              <div className="flex h-full min-h-[260px] items-center justify-center rounded-2xl border border-dashed border-slate-700 bg-slate-900/40 p-6 text-center text-sm leading-7 text-slate-400">
+              <div className="flex h-full min-h-[320px] items-center justify-center rounded-[20px] border border-dashed border-slate-700 bg-slate-900/50 p-6 text-center text-sm leading-7 text-slate-400">
                 Sélectionnez une ville pour voir la météo et les activités recommandées.
               </div>
             )}
