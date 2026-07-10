@@ -63,8 +63,8 @@ export default function PlanPage() {
 
   return (
     <main className="min-h-screen px-4 py-8 text-slate-100 sm:px-6 lg:px-8 lg:py-10">
-      <div className="mx-auto flex max-w-7xl flex-col gap-6 overflow-hidden rounded-[32px] border border-white/10 bg-slate-900/80 p-5 shadow-[0_25px_80px_rgba(2,8,23,0.65)] backdrop-blur-xl sm:p-6 lg:p-8">
-        <div className="flex flex-col gap-5 rounded-[24px] border border-cyan-400/10 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800/90 p-5 sm:flex-row sm:items-end sm:justify-between sm:p-6">
+      <div className="mx-auto flex max-w-7xl flex-col gap-6 overflow-hidden rounded-3xl border border-white/10 bg-slate-900/80 p-5 shadow-[0_25px_80px_rgba(2,8,23,0.65)] backdrop-blur-xl sm:p-6 lg:p-8">
+        <div className="flex flex-col gap-5 rounded-3xl border border-cyan-400/10 bg-linear-to-br from-slate-900 via-slate-900 to-slate-800/90 p-5 sm:flex-row sm:items-end sm:justify-between sm:p-6">
           <div className="max-w-2xl">
             <div className="inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-cyan-300">
               Trip Planner
@@ -85,7 +85,7 @@ export default function PlanPage() {
         </div>
 
         <div className="grid gap-6 xl:grid-cols-[0.9fr_1.1fr]">
-          <section className="min-w-0 rounded-[24px] border border-white/10 bg-slate-950/70 p-5 shadow-inner shadow-black/20">
+          <section className="min-w-0 rounded-3xl border border-white/10 bg-slate-950/70 p-5 shadow-inner shadow-black/20">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-cyan-400/15 text-lg text-cyan-300">
                 ✦
@@ -107,7 +107,7 @@ export default function PlanPage() {
                 />
               </label>
               <button
-                className="w-full rounded-2xl bg-gradient-to-r from-cyan-400 to-sky-500 px-4 py-3 font-semibold text-slate-950 transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-70"
+                className="w-full rounded-2xl bg-linear-to-r from-cyan-400 to-sky-500 px-4 py-3 font-semibold text-slate-950 transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-70"
                 onClick={handlePlan}
                 disabled={loading}
               >
@@ -116,13 +116,13 @@ export default function PlanPage() {
             </div>
 
             {message ? (
-              <p className="mt-4 rounded-2xl border border-slate-800 bg-slate-950/80 p-3 text-sm leading-6 text-slate-300 break-words whitespace-pre-line">
+              <p className="mt-4 rounded-2xl border border-slate-800 bg-slate-950/80 p-3 text-sm leading-6 text-slate-300 wrap-break-word whitespace-pre-line">
                 {message}
               </p>
             ) : null}
           </section>
 
-          <section className="min-w-0 rounded-[24px] border border-white/10 bg-slate-950/70 p-5 shadow-inner shadow-black/20">
+          <section className="min-w-0 rounded-3xl border border-white/10 bg-slate-950/70 p-5 shadow-inner shadow-black/20">
             {plan ? (
               <>
                 <div className="flex items-center gap-3">
@@ -130,13 +130,13 @@ export default function PlanPage() {
                     ✈
                   </div>
                   <div>
-                    <h2 className="text-xl font-semibold text-white break-words">Résultat pour {plan.city}</h2>
+                    <h2 className="text-xl font-semibold text-white wrap-break-word">Résultat pour {plan.city}</h2>
                     <p className="text-sm text-slate-400">Un aperçu rapide, propre et lisible.</p>
                   </div>
                 </div>
 
                 <div className="mt-5 grid gap-4 lg:grid-cols-2">
-                  <div className="min-w-0 overflow-hidden rounded-[20px] border border-cyan-400/10 bg-gradient-to-br from-cyan-500/10 to-slate-900 p-4">
+                  <div className="min-w-0 overflow-hidden rounded-[20px] border border-cyan-400/10 bg-linear-to-br from-cyan-500/10 to-slate-900 p-4">
                     <p className="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-300">Météo</p>
                     <p className="mt-3 text-4xl font-semibold text-white">{plan.weather.temperature}°C</p>
                     <p className="mt-2 text-sm leading-7 text-slate-300 break-all whitespace-pre-line">
@@ -144,7 +144,7 @@ export default function PlanPage() {
                     </p>
                   </div>
 
-                  <div className="min-w-0 overflow-hidden rounded-[20px] border border-emerald-400/10 bg-gradient-to-br from-emerald-500/10 to-slate-900 p-4">
+                  <div className="min-w-0 overflow-hidden rounded-[20px] border border-emerald-400/10 bg-linear-to-br from-emerald-500/10 to-slate-900 p-4">
                     <p className="text-sm font-semibold uppercase tracking-[0.25em] text-emerald-300">Activités</p>
                     <ul className="mt-3 space-y-2">
                       {plan.activities.map((activity, index) => (
@@ -158,7 +158,7 @@ export default function PlanPage() {
                 </div>
               </>
             ) : (
-              <div className="flex h-full min-h-[320px] items-center justify-center rounded-[20px] border border-dashed border-slate-700 bg-slate-900/50 p-6 text-center text-sm leading-7 text-slate-400">
+              <div className="flex h-full min-h-80 items-center justify-center rounded-[20px] border border-dashed border-slate-700 bg-slate-900/50 p-6 text-center text-sm leading-7 text-slate-400">
                 Sélectionnez une ville pour voir la météo et les activités recommandées.
               </div>
             )}

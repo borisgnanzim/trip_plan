@@ -35,7 +35,7 @@ export default function RegisterPage() {
 
   return (
     <main className="flex min-h-screen items-center justify-center px-4 py-10 text-slate-100 sm:px-6">
-      <div className="w-full max-w-md overflow-hidden rounded-[24px] border border-slate-800/80 bg-slate-900/80 p-6 shadow-[0_20px_80px_rgba(2,8,23,0.55)] backdrop-blur-sm sm:p-8">
+      <div className="w-full max-w-md overflow-hidden rounded-3xl border border-slate-800/80 bg-slate-900/80 p-6 shadow-[0_20px_80px_rgba(2,8,23,0.55)] backdrop-blur-sm sm:p-8">
         <div className="inline-flex items-center rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-sm font-medium tracking-[0.25em] text-emerald-300">
           TRIP PLANNER
         </div>
