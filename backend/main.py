@@ -1,12 +1,22 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.utils import get_openapi
 from app.core.database import Base, engine
+from app.core.config import settings
 from app.routes.auth_routes import router as auth_router
 from app.routes.plan_routes import router as plan_router
 
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Trip Planner API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[origin.strip() for origin in settings.CORS_ORIGINS.split(",") if origin.strip()],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 def custom_openapi():

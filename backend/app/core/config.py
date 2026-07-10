@@ -15,4 +15,6 @@ class Settings:
     OPENWEATHER_API_KEY = os.getenv("OPENWEATHER_API_KEY")
     OPENTRIPMAP_API_KEY = os.getenv("OPENTRIPMAP_API_KEY")
 
+    CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000")
+
 settings = Settings()

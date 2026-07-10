@@ -22,7 +22,9 @@ export default function LoginPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
+      console.log("Login response status:", res.status);
       const data = await res.json();
+      console.log("Login response:", data);
       if (!res.ok) throw new Error(data.detail || "Connexion impossible");
 
       localStorage.setItem("trip_token", data.access_token || "");
